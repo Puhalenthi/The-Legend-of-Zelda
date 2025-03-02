@@ -37,44 +37,36 @@ public class PlayerStateIdle : PlayerState
 
     public void handleDown()
     {
-        resetTriggers();
+        player.ResetAnimatorTriggers();
         player.setState(new PlayerStateWalk(player, PlayerDirection.DOWN));
     }
 
     public void handleUp()
     {
-        resetTriggers();
+        player.ResetAnimatorTriggers();
         player.setState(new PlayerStateWalk(player, PlayerDirection.UP));
     }
 
     public void handleLeft()
     {
-        resetTriggers();
+        player.ResetAnimatorTriggers();
         player.setState(new PlayerStateWalk(player, PlayerDirection.LEFT));
     }
 
     public void handleRight()
     {
-        resetTriggers();
+        player.ResetAnimatorTriggers();
         player.setState(new PlayerStateWalk(player, PlayerDirection.RIGHT));
     }
 
     public void handleSpace()
     {
-        resetTriggers();
+        player.ResetAnimatorTriggers();
         player.setState(new PlayerStateAttack(player, this.direction));
     }
 
     public void handleIdle()
     {
         // already idle
-    }
-
-    private void resetTriggers()
-    {
-        player.animator.ResetTrigger("OnIdleUp");
-        player.animator.ResetTrigger("OnIdleRight");
-        player.animator.ResetTrigger("OnIdleDown");
-        player.animator.ResetTrigger("OnIdleLeft");
     }
 }

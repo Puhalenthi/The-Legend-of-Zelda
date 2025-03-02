@@ -38,7 +38,7 @@ public class PlayerStateAttack : PlayerState
         framesRemaining--;
         if (framesRemaining <= 0)
         {
-            resetTriggers();
+            player.ResetAnimatorTriggers();
             player.setState(new PlayerStateIdle(player, this.direction));
         }
     }
@@ -71,13 +71,5 @@ public class PlayerStateAttack : PlayerState
     public void handleIdle()
     {
         // cannot idle while already attacking
-    }
-
-    private void resetTriggers()
-    {
-        player.animator.ResetTrigger("OnAttackUp");
-        player.animator.ResetTrigger("OnAttackRight");
-        player.animator.ResetTrigger("OnAttackDown");
-        player.animator.ResetTrigger("OnAttackLeft");
     }
 }

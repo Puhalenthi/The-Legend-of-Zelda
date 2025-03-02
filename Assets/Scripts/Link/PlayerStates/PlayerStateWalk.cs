@@ -29,7 +29,7 @@ public class PlayerStateWalk : PlayerState
 
         player.animator.SetTrigger("OnWalkDown");
         //Debug.Log("should have set trigger./..");
-        //player.transform.position = new Vector2 (player.transform.position.x, player.transform.position.y - speed);
+        player.transform.position = new Vector2 (player.transform.position.x, player.transform.position.y - speed);
     }
 
     public void handleUp()
@@ -37,7 +37,7 @@ public class PlayerStateWalk : PlayerState
         this.direction = PlayerDirection.UP;
 
         player.animator.SetTrigger("OnWalkUp");
-        //player.transform.position = new Vector2(player.transform.position.x, player.transform.position.y + speed);
+        player.transform.position = new Vector2(player.transform.position.x, player.transform.position.y + speed);
     }
 
     public void handleLeft()
@@ -45,7 +45,7 @@ public class PlayerStateWalk : PlayerState
         this.direction = PlayerDirection.LEFT;
 
         player.animator.SetTrigger("OnWalkLeft");
-        //player.transform.position = new Vector2(player.transform.position.x - speed, player.transform.position.y);
+        player.transform.position = new Vector2(player.transform.position.x - speed, player.transform.position.y);
     }
 
     public void handleRight()
@@ -53,28 +53,20 @@ public class PlayerStateWalk : PlayerState
         this.direction = PlayerDirection.RIGHT;
 
         player.animator.SetTrigger("OnWalkRight");
-        //player.transform.position = new Vector2(player.transform.position.x + speed, player.transform.position.y);
+        player.transform.position = new Vector2(player.transform.position.x + speed, player.transform.position.y);
     }
 
 
 
     public void handleSpace()
     {
-       resetTriggers();
+       player.ResetAnimatorTriggers();
        player.setState(new PlayerStateAttack(player, this.direction));
     }
 
     public void handleIdle()
     {
-        resetTriggers();
+        player.ResetAnimatorTriggers();
         player.setState(new PlayerStateIdle(player, this.direction));
-    }
-
-    private void resetTriggers()
-    {
-        player.animator.ResetTrigger("OnWalkUp");
-        player.animator.ResetTrigger("OnWalkRight");
-        player.animator.ResetTrigger("OnWalkDown");
-        player.animator.ResetTrigger("OnWalkLeft");
     }
 }
