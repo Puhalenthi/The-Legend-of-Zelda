@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
 
     public Animator animator;
 
-    public float speed = 0.5f;
+    public float speed = 0.01f;
 
     private bool canPressSpace = true;
 
