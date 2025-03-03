@@ -11,6 +11,11 @@ public class PlayerController : MonoBehaviour
 
     public Animator animator;
 
+    public BoxCollider2D leftBoxCollider;
+    public BoxCollider2D topBoxCollider;
+    public BoxCollider2D rightBoxCollider;
+    public BoxCollider2D bottomBoxCollider;
+
     public float speed = 0.01f;
 
     private bool canPressSpace = true;
@@ -85,5 +90,11 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         canPressSpace = true;
+
+        // Disable colliders
+        topBoxCollider.enabled = false;
+        rightBoxCollider.enabled = false;
+        bottomBoxCollider.enabled = false;
+        leftBoxCollider.enabled = false;
     }
 }
