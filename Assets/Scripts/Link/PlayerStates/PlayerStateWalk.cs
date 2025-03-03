@@ -16,14 +16,14 @@ public class PlayerStateWalk : PlayerState
         this.speed = this.player.speed;
     }
 
-    public void advanceState()
+    public void AdvanceState()
     {
         // stays the same
     }
 
 
 
-    public void handleDown()
+    public void HandleDown()
     {
         this.direction = PlayerDirection.DOWN;
 
@@ -32,7 +32,7 @@ public class PlayerStateWalk : PlayerState
         player.transform.position = new Vector2 (player.transform.position.x, player.transform.position.y - speed);
     }
 
-    public void handleUp()
+    public void HandleUp()
     {
         this.direction = PlayerDirection.UP;
 
@@ -40,7 +40,7 @@ public class PlayerStateWalk : PlayerState
         player.transform.position = new Vector2(player.transform.position.x, player.transform.position.y + speed);
     }
 
-    public void handleLeft()
+    public void HandleLeft()
     {
         this.direction = PlayerDirection.LEFT;
 
@@ -48,7 +48,7 @@ public class PlayerStateWalk : PlayerState
         player.transform.position = new Vector2(player.transform.position.x - speed, player.transform.position.y);
     }
 
-    public void handleRight()
+    public void HandleRight()
     {
         this.direction = PlayerDirection.RIGHT;
 
@@ -58,15 +58,15 @@ public class PlayerStateWalk : PlayerState
 
 
 
-    public void handleSpace()
+    public void HandleSpace()
     {
        player.ResetAnimatorTriggers();
-       player.setState(new PlayerStateAttack(player, this.direction));
+       player.SetState(new PlayerStateAttack(player, this.direction));
     }
 
-    public void handleIdle()
+    public void HandleIdle()
     {
         player.ResetAnimatorTriggers();
-        player.setState(new PlayerStateIdle(player, this.direction));
+        player.SetState(new PlayerStateIdle(player, this.direction));
     }
 }
