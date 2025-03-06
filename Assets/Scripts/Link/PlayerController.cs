@@ -80,7 +80,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
     public IEnumerator SpaceCooldown()
     {
         yield return new WaitForSeconds(0.5f);
