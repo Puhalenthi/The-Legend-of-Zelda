@@ -69,4 +69,9 @@ public class PlayerStateWalk : PlayerState
         player.ResetAnimatorTriggers();
         player.setState(new PlayerStateIdle(player, this.direction));
     }
+
+    public PlayerDirection GetDirection()
+    {
+        return this.direction;
+    }
 }
