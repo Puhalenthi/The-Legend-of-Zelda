@@ -86,4 +86,9 @@ public class PlayerStateAttack : PlayerState
     {
         // cannot idle while already attacking
     }
+
+    public PlayerDirection GetDirection()
+    {
+        return this.direction;
+    }
 }
