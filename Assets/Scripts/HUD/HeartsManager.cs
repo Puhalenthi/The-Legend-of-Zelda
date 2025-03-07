@@ -20,6 +20,7 @@ public class HeartsManager : MonoBehaviour
     
     private GameObject _initHeart, _oldHeart, _newHeart;
     private float _totalHealth;
+    private int _floorDmg;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +40,7 @@ public class HeartsManager : MonoBehaviour
         
     }
     
+    /*
     public void DamageLink(int dmg)
     {
         if (dmg >= _totalHealth)
@@ -46,16 +48,23 @@ public class HeartsManager : MonoBehaviour
             SignalGameOver();
         }
         else {
-            floor_dmg = Math.Floor(dmg);
-            for (int pos = _heartStack.Count - 1; i >= _heartStack.Count - floor_dmg; i --)
+            _floorDmg = Math.Floor(dmg);
+            for (int pos = _heartStack.Count - 1; i >= _heartStack.Count - _floorDmg; i --)
             {
-                _oldHeart = _heartStack[pos];
-                _heartStack.RemoveAt(pos);
-                Destroy(_oldHeart);
+                oldHeart = _heartStack[pos];
+                if (pos >= 3) 
+                {
+                    _heartStack.RemoveAt(pos);
+                    Destroy(_oldHeart);
+                }
+                else
+                {
+                    _newHeart = Instantiate(
+                }
             }
-            if (dmg - floor_dmg == 0.5) // Half-heart calculations
+            if (dmg - _floorDmg == 0.5) // Half-heart calculations
             {
-                _oldHeart = _heartStack[_heartStack.Count - 1]
+                _oldHeart = _heartStack[_heartStack.Count - 1];
                 if (_totalHealth == (int)_totalHealth)
                 {
                     _newHeart = Instantiate(halfHeartPrefab, _
@@ -80,7 +89,7 @@ public class HeartsManager : MonoBehaviour
         {
             
         }
-    }
+     */
     
     public void SignalGameOver()
     {
