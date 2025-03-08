@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7901258336284321320}
   - component: {fileID: 8568581891645205401}
   - component: {fileID: 2830716613005552547}
+  - component: {fileID: 4069298808840508955}
   m_Layer: 0
   m_Name: Link
   m_TagString: Untagged
@@ -122,10 +123,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 5451474693653296494}
-  leftBoxCollider: {fileID: 4566538436002442071}
-  topBoxCollider: {fileID: 1679385983666535070}
-  rightBoxCollider: {fileID: 3641695614445000816}
-  bottomBoxCollider: {fileID: 7260521097890439906}
+  leftBoxCollider: {fileID: 0}
+  topBoxCollider: {fileID: 0}
+  rightBoxCollider: {fileID: 0}
+  bottomBoxCollider: {fileID: 0}
   speed: 0.01
 --- !u!61 &8568581891645205401
 BoxCollider2D:
@@ -199,3 +200,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &4069298808840508955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1383655154217144155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f703423934db8c144b891db1763ad53e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
