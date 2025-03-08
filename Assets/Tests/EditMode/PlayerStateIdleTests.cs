@@ -24,7 +24,7 @@ public class PlayerStateIdleTests
         player = new GameObject().AddComponent<PlayerController>();
         player.animator = player.gameObject.AddComponent<Animator>();
 
-        player.setState(new PlayerStateIdle(player, PlayerDirection.UP));
+        player.SetState(new PlayerStateIdle(player, PlayerDirection.UP));
     }
 
     [Test]
@@ -37,7 +37,7 @@ public class PlayerStateIdleTests
     [Test]
     public void PlayerDirection_LeftWalkOnInputLeft()
     {
-        player.GetState().handleLeft();
+        player.GetState().HandleLeft();
 
         Assert.AreEqual(PlayerDirection.LEFT, player.GetState().GetDirection());
         Assert.That(player.GetState(), Is.TypeOf<PlayerStateWalk>());
@@ -46,7 +46,7 @@ public class PlayerStateIdleTests
     [Test]
     public void PlayerDirection_RightWalkOnInputRight()
     {
-        player.GetState().handleRight();
+        player.GetState().HandleRight();
 
         Assert.AreEqual(PlayerDirection.RIGHT, player.GetState().GetDirection());
         Assert.That(player.GetState(), Is.TypeOf<PlayerStateWalk>());
@@ -55,7 +55,7 @@ public class PlayerStateIdleTests
     [Test]
     public void PlayerDirection_UpWalkOnInputUp()
     {
-        player.GetState().handleUp();
+        player.GetState().HandleUp();
 
         Assert.AreEqual(PlayerDirection.UP, player.GetState().GetDirection());
         Assert.That(player.GetState(), Is.TypeOf<PlayerStateWalk>());
@@ -64,7 +64,7 @@ public class PlayerStateIdleTests
     [Test]
     public void PlayerDirection_DownWalkOnInputDown()
     {
-        player.GetState().handleDown();
+        player.GetState().HandleDown();
 
         Assert.AreEqual(PlayerDirection.DOWN, player.GetState().GetDirection());
         Assert.That(player.GetState(), Is.TypeOf<PlayerStateWalk>());
@@ -73,8 +73,8 @@ public class PlayerStateIdleTests
     [Test]
     public void PlayerDirection_DownWalkOnConsecutiveInputDown()
     {
-        player.GetState().handleDown();
-        player.GetState().handleDown();
+        player.GetState().HandleDown();
+        player.GetState().HandleDown();
 
         Assert.AreEqual(PlayerDirection.DOWN, player.GetState().GetDirection());
         Assert.That(player.GetState(), Is.TypeOf<PlayerStateWalk>());
@@ -83,8 +83,8 @@ public class PlayerStateIdleTests
     [Test]
     public void PlayerDirection_UpWalkOnInputDownUp()
     {
-        player.GetState().handleDown();
-        player.GetState().handleUp();
+        player.GetState().HandleDown();
+        player.GetState().HandleUp();
 
         Assert.AreEqual(PlayerDirection.UP, player.GetState().GetDirection());
         Assert.That(player.GetState(), Is.TypeOf<PlayerStateWalk>());
