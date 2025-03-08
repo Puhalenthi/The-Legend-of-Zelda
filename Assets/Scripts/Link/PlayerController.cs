@@ -32,51 +32,48 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey("left") || Input.GetKey(KeyCode.A))
         {
-            state.handleLeft();
+            state.HandleLeft();
             //Debug.Log("LEFT!!!");
         }
         else if (Input.GetKey("right") || Input.GetKey(KeyCode.D))
         {
-            state.handleRight();
+            state.HandleRight();
             //Debug.Log("RIGHT!!!");
         }
         else if (Input.GetKey("up") || Input.GetKey(KeyCode.W))
         {
-            state.handleUp();
+            state.HandleUp();
             //Debug.Log("UP!!!");
         }
         else if (Input.GetKey("down") || Input.GetKey(KeyCode.S))
         {
-            state.handleDown();
+            state.HandleDown();
             //Debug.Log("DOWN!!!");
         }
         else
         {
-            state.handleIdle();
-
-            Debug.Log("Idling");
+            state.HandleIdle();
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && canPressSpace)
         {
-            state.handleSpace();
+            state.HandleSpace();
             canPressSpace = false;
             StartCoroutine(SpaceCooldown());
         }
 
 
-        state.advanceState();
+        state.AdvanceState();
     }
-
+    
     public PlayerState GetState()
     {
         return this.state;
     }
 
-    public void setState(PlayerState s)
+    public void SetState(PlayerState s)    
     {
         this.state = s;
-        //Debug.Log("new state: " + state.ToString());
     }
 
     public void ResetAnimatorTriggers()

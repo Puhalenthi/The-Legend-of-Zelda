@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class HitMessage : Message
 {
-    public Actor.actorType CreatureHit;
+    public GameObject CreatureHit;
     
-    public HitMessage (Actor.actorType CreatureHit)
+    public HitMessage (GameObject CreatureHit)
     {
         this.CreatureHit = CreatureHit;
     }

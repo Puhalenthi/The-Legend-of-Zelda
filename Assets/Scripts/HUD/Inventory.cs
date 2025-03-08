@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour
+public class Inventory : Singleton<Inventory>
 {
 
     private int rupeeCount = 0;
@@ -12,6 +11,7 @@ public class Inventory : MonoBehaviour
     public GameObject BridgeCollider;
 
 
+    /*
     //Set up Singleton
     public Inventory Instance { get; private set; }
 
@@ -24,13 +24,14 @@ public class Inventory : MonoBehaviour
         }
         Instance = this;
     }
+    */
 
     public void CollectRupee()
     {
         rupeeCount++;
         if (rupeeCount < 10)
         {
-            RupeeText.GetComponent<TextMeshPro>().text = rupeeCount + "/10 Rupees";
+            RupeeText.GetComponent<TMPro.TextMeshProUGUI>().text = rupeeCount + "/10 Rupees";
         } else
         {
             RupeeText.SetActive(false);

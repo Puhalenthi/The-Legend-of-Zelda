@@ -4,16 +4,16 @@ using UnityEngine;
 
 public interface PlayerState
 {
-    public void handleLeft();
-    public void handleRight();
-    public void handleUp();
-    public void handleDown();
+    public void HandleLeft();
+    public void HandleRight();
+    public void HandleUp();
+    public void HandleDown();
 
-    public void handleSpace();
+    public void HandleSpace();
 
-    public void handleIdle();
+    public void HandleIdle();
 
-    public void advanceState();
+    public void AdvanceState();
 
     public PlayerDirection GetDirection();
 }

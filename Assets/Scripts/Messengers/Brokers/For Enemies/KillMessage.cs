@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class KillMessage : Message
 {
-    public Actor.actorType CreatureKilled;
+    public GameObject CreatureKilled;
     
-    public HitMessage (Actor.actorType CreatureKilled)
+    public KillMessage(GameObject CreatureKilled)
     {
         this.CreatureKilled = CreatureKilled;
     }

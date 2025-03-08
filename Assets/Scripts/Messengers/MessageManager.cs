@@ -2,17 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MessageManager : MonoBehaviour
+public class MessageManager : Singleton<MessageManager>
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public HealMessenger healMessenger = new HealMessenger();
+    public DamageMessenger damageMessenger = new DamageMessenger();
+    public HitMessenger hitMessenger = new HitMessenger();
+    public KillMessenger killMessenger = new KillMessenger();
 }
