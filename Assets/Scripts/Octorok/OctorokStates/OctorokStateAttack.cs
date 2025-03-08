@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+<<<<<<< HEAD
 //using static UnityEngine.RuleTile.TilingRuleOutput;
+=======
+>>>>>>> a1c509ff073ec2b6c748f12056583ac09dba8ae7
 
 public class OctorokStateAttack : OctorokState
 {
