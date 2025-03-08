@@ -69,4 +69,9 @@ public class PlayerStateIdle : PlayerState
     {
         // already idle
     }
+
+    public PlayerDirection GetDirection()
+    {
+        return this.direction;
+    }
 }

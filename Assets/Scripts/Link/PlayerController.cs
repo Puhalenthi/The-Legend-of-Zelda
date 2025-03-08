@@ -68,6 +68,11 @@ public class PlayerController : MonoBehaviour
         state.advanceState();
     }
 
+    public PlayerState GetState()
+    {
+        return this.state;
+    }
+
     public void setState(PlayerState s)
     {
         this.state = s;
