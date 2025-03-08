@@ -47,42 +47,42 @@ public class PlayerStateAttack : PlayerState
         }
     }
 
-    public void advanceState()
+    public void AdvanceState()
     {
         framesRemaining--;
         if (framesRemaining <= 0)
         {
             player.ResetAnimatorTriggers();
-            player.setState(new PlayerStateIdle(player, this.direction));
+            player.SetState(new PlayerStateIdle(player, this.direction));
         }
     }
 
-    public void handleDown()
+    public void HandleDown()
     {
         //cannot move while attacking
     }
 
-    public void handleUp()
+    public void HandleUp()
     {
         //cannot move while attacking
     }
 
-    public void handleLeft()
+    public void HandleLeft()
     {
         //cannot move while attacking
     }
 
-    public void handleRight()
+    public void HandleRight()
     {
         //cannot move while attacking
     }
 
-    public void handleSpace()
+    public void HandleSpace()
     {
         // cannot attack while already attacking
     }
 
-    public void handleIdle()
+    public void HandleIdle()
     {
         // cannot idle while already attacking
     }

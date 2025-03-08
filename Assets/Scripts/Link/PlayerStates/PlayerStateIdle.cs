@@ -30,42 +30,42 @@ public class PlayerStateIdle : PlayerState
         }
     }
 
-    public void advanceState()
+    public void AdvanceState()
     {
         // character is idling (nothing happens)
     }
 
-    public void handleDown()
+    public void HandleDown()
     {
         player.ResetAnimatorTriggers();
-        player.setState(new PlayerStateWalk(player, PlayerDirection.DOWN));
+        player.SetState(new PlayerStateWalk(player, PlayerDirection.DOWN));
     }
 
-    public void handleUp()
+    public void HandleUp()
     {
         player.ResetAnimatorTriggers();
-        player.setState(new PlayerStateWalk(player, PlayerDirection.UP));
+        player.SetState(new PlayerStateWalk(player, PlayerDirection.UP));
     }
 
-    public void handleLeft()
+    public void HandleLeft()
     {
         player.ResetAnimatorTriggers();
-        player.setState(new PlayerStateWalk(player, PlayerDirection.LEFT));
+        player.SetState(new PlayerStateWalk(player, PlayerDirection.LEFT));
     }
 
-    public void handleRight()
+    public void HandleRight()
     {
         player.ResetAnimatorTriggers();
-        player.setState(new PlayerStateWalk(player, PlayerDirection.RIGHT));
+        player.SetState(new PlayerStateWalk(player, PlayerDirection.RIGHT));
     }
 
-    public void handleSpace()
+    public void HandleSpace()
     {
         player.ResetAnimatorTriggers();
-        player.setState(new PlayerStateAttack(player, this.direction));
+        player.SetState(new PlayerStateAttack(player, this.direction));
     }
 
-    public void handleIdle()
+    public void HandleIdle()
     {
         // already idle
     }
