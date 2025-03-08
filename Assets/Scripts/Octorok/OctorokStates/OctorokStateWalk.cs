@@ -11,14 +11,12 @@ public class OctorokStateWalk : OctorokState
 
     private int framesRemaining;
 
-    public float speed = 0.05f;
-
     public OctorokStateWalk(OctorokDirection direction, OctorokController controller)
     {
         _direction = direction;
         enemy = controller;
 
-        framesRemaining = Random.Range(60, 121);
+        framesRemaining = Random.Range(300, 600);
 
         if (direction == OctorokDirection.UP)
         {
@@ -59,7 +57,7 @@ public class OctorokStateWalk : OctorokState
 
     public void Move()
     {
-        enemy.transform.Translate(_vectorDirection * speed * Time.deltaTime);
+        enemy.transform.Translate(_vectorDirection * enemy.speed * Time.deltaTime);
     }
 
     public IEnumerator Timer(float duration)

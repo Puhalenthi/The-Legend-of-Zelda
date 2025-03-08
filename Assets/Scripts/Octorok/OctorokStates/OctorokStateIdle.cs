@@ -15,7 +15,7 @@ public class OctorokStateIdle : OctorokState
         _direction = direction;
 
         // random number of frames from 60, 181
-        framesRemaining = Random.Range(60, 181);
+        framesRemaining = Random.Range(150, 300);
 
         enemy.animator.SetTrigger("OnIdle");
     }
@@ -27,13 +27,13 @@ public class OctorokStateIdle : OctorokState
         if (framesRemaining <= 0)
         {
             enemy.animator.ResetTrigger("OnIdle");
-            int action = Random.Range(1, 3);
-            if (action == 1) // Walk
+            int action = Random.Range(1, 4);
+            if (action <= 2) // Walk
             {
                 OctorokDirection randomDirection = (OctorokDirection)Random.Range(0, System.Enum.GetValues(typeof(OctorokDirection)).Length);
                 enemy.SetState(new OctorokStateWalk(randomDirection, enemy));
             }
-            else if (action == 2) // Attack
+            else if (action == 3) // Attack
             {
                 enemy.SetState(new OctorokStateAttack(_direction, enemy));
             }

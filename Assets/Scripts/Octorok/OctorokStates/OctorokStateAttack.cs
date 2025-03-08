@@ -10,7 +10,7 @@ public class OctorokStateAttack : OctorokState
 
     private OctorokDirection _direction;
 
-    private int totalFrames = 120;
+    private int totalFrames = 300;
     private int framesRemaining;
 
     public OctorokStateAttack(OctorokDirection direction, OctorokController controller)
