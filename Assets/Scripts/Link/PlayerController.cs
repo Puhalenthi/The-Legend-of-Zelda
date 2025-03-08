@@ -48,8 +48,6 @@ public class PlayerController : MonoBehaviour
         else
         {
             state.HandleIdle();
-
-            Debug.Log("Idling");
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && canPressSpace)

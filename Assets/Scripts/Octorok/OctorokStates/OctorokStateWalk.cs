@@ -1,0 +1,69 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
+
+public class OctorokStateWalk : OctorokState
+{
+    protected OctorokController enemy;
+    private OctorokDirection _direction;
+    private Vector2 _vectorDirection;
+
+    private int framesRemaining;
+
+    public float speed = 0.05f;
+
+    public OctorokStateWalk(OctorokDirection direction, OctorokController controller)
+    {
+        _direction = direction;
+        enemy = controller;
+
+        framesRemaining = Random.Range(60, 121);
+
+        if (direction == OctorokDirection.UP)
+        {
+            enemy.animator.SetTrigger("OnWalkUp");
+            _vectorDirection = Vector2.up;
+        }
+        else if (direction == OctorokDirection.RIGHT)
+        {
+            enemy.animator.SetTrigger("OnWalkRight");
+            _vectorDirection = Vector2.right;
+        }
+        else if (direction == OctorokDirection.DOWN)
+        {
+            enemy.animator.SetTrigger("OnWalkDown");
+            _vectorDirection = Vector2.down;
+        }
+        else if (direction == OctorokDirection.LEFT)
+        {
+            enemy.animator.SetTrigger("OnWalkLeft");
+            _vectorDirection = Vector2.left;
+        }
+    }
+
+    public void AdvanceState()
+    {
+        framesRemaining--;
+
+        if (framesRemaining <= 0)
+        {
+            if (_direction == OctorokDirection.UP) enemy.animator.ResetTrigger("OnWalkUp");
+            else if (_direction == OctorokDirection.RIGHT) enemy.animator.ResetTrigger("OnWalkRight");
+            else if (_direction == OctorokDirection.DOWN) enemy.animator.ResetTrigger("OnWalkDown");
+            else if (_direction == OctorokDirection.LEFT) enemy.animator.ResetTrigger("OnWalkLeft");
+
+            enemy.SetState(new OctorokStateIdle(_direction, enemy));
+        }
+    }
+
+    public void Move()
+    {
+        enemy.transform.Translate(_vectorDirection * speed * Time.deltaTime);
+    }
+
+    public IEnumerator Timer(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+    }
+}
