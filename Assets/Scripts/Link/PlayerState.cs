@@ -14,4 +14,6 @@ public interface PlayerState
     public void HandleIdle();
 
     public void AdvanceState();
+
+    public PlayerDirection GetDirection();
 }

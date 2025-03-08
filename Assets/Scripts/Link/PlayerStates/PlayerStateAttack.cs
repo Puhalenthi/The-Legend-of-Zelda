@@ -15,21 +15,35 @@ public class PlayerStateAttack : PlayerState
         this.direction = direction;
 
 
+        // TODO: check if enemy is in box collider, handle it.
+        // Box Colliders are disabled during space cooldown
         if (direction == PlayerDirection.UP)
         {
             player.animator.SetTrigger("OnAttackUp");
+            player.topBoxCollider.enabled = true;
+
+            // TODO: handle
         }
         else if (direction == PlayerDirection.RIGHT)
         {
             player.animator.SetTrigger("OnAttackRight");
+            player.rightBoxCollider.enabled = true;
+
+            // TODO: handle
         }
         else if (direction == PlayerDirection.DOWN)
         {
             player.animator.SetTrigger("OnAttackDown");
+            player.bottomBoxCollider.enabled = true;
+
+            // TODO: handle
         }
         else if (direction == PlayerDirection.LEFT)
         {
             player.animator.SetTrigger("OnAttackLeft");
+            player.leftBoxCollider.enabled = true;
+
+            // TODO: handle
         }
     }
 
@@ -71,5 +85,10 @@ public class PlayerStateAttack : PlayerState
     public void HandleIdle()
     {
         // cannot idle while already attacking
+    }
+
+    public PlayerDirection GetDirection()
+    {
+        return this.direction;
     }
 }
