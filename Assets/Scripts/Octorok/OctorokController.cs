@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class OctorokController : MonoBehaviour
 {
-    private OctorokState state;
+    private OctorokState _state;
+    private OctorokDirection _direction;
+
     public Animator animator;
 
     public GameObject pelletPrefab;
@@ -15,14 +17,15 @@ public class OctorokController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        state = new OctorokStateIdle(OctorokDirection.UP, this);
+        _direction = OctorokDirection.UP;
+        _state = new OctorokStateIdle(_direction, this);
     }
 
     // Update is called once per frame
     void Update()
     {
-        state.Move();
-        state.AdvanceState();
+        _state.Move();
+        _state.AdvanceState();
     }
 
     public GameObject InstantiatePellet()
@@ -30,9 +33,20 @@ public class OctorokController : MonoBehaviour
         return Instantiate(pelletPrefab, transform.position, Quaternion.identity);
     }
 
-    public void SetState(OctorokState s)
+    public void SetState(OctorokDirection d, OctorokState s)
     {
-        state = s;
+        _direction = d;
+        _state = s;
+    }
+    
+    public OctorokState GetState()
+    {
+        return _state;
+    }
+
+    public OctorokDirection GetDirection()
+    {
+        return _direction;
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
