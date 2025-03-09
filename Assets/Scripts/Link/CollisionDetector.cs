@@ -12,6 +12,11 @@ public class CollisionDetector : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.CompareTag("Rupee"))
+        {
+            //Publish a rupee message and use audioManager (from service locator) to play the rupee sound
+        }
+
         if (collision.gameObject.CompareTag("EndGate"))
         {
             SceneManager.LoadScene("WinScene");
