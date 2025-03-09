@@ -55,11 +55,13 @@ public class HeartsManager : MonoBehaviour
             SignalGameOver();
         }
         else {
+            int _heartObjectsLen = _heartObjects.Count;
             if (_heartStates[_heartStates.Count - 1] == _heartTypes.FullHeart)
             {
                 _floorDmg = (int)Math.Floor(dmg);
-                for (int pos = _heartObjects.Count - 1; pos >= _heartObjects.Count - _floorDmg; pos --)
+                for (int pos = _heartObjects.Count - 1; pos >= _heartObjectsLen - _floorDmg; pos --)
                 {
+                    Debug.Log(pos);
                     _oldHeart = _heartObjects[pos];
                     _heartObjects.RemoveAt(pos);
                     _heartStates.RemoveAt(pos);
@@ -73,17 +75,11 @@ public class HeartsManager : MonoBehaviour
                     _heartStates[_heartStates.Count - 1] = _heartTypes.HalfHeart;
                     Destroy(_oldHeart);
                 }
-                else
-                {
-                    _heartObjects.RemoveAt(_heartObjects.Count - 1);
-                    _heartStates.RemoveAt(_heartObjects.Count - 1);
-                    Destroy(_oldHeart);
-                }
             }
             else
             {
                 _floorDmg = (int)Math.Floor(dmg);
-                for (int pos = _heartObjects.Count - 1; pos >= _heartObjects.Count - _floorDmg; pos --)
+                for (int pos = _heartObjects.Count - 1; pos >= _heartObjectsLen - _floorDmg; pos --)
                 {
                     _oldHeart = _heartObjects[pos];
                     _heartObjects.RemoveAt(pos);
@@ -92,12 +88,14 @@ public class HeartsManager : MonoBehaviour
                 }
                 if (dmg - _floorDmg == 0.5) // Half-heart calculations
                 {
+                    _oldHeart = _heartObjects[_heartObjects.Count - 1];
                     _heartObjects.RemoveAt(_heartObjects.Count - 1);
                     _heartStates.RemoveAt(_heartStates.Count - 1);
                     Destroy(_oldHeart);
                 }
                 else
                 {
+                    Debug.Log(2);
                     _oldHeart = _heartObjects[_heartObjects.Count - 1];
                     _newHeart = Instantiate(halfHeartPrefab, _oldHeart.transform.position, Quaternion.identity, this.transform);
                     _heartObjects[_heartObjects.Count - 1] = _newHeart;
