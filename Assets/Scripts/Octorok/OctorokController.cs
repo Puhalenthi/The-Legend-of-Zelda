@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class OctorokController : MonoBehaviour
 {
-    private OctorokState state;
+    private OctorokState _state;
     private OctorokDirection _direction;
 
     public Animator animator;
@@ -18,14 +18,14 @@ public class OctorokController : MonoBehaviour
     void Start()
     {
         _direction = OctorokDirection.UP;
-        state = new OctorokStateIdle(_direction, this);
+        _state = new OctorokStateIdle(_direction, this);
     }
 
     // Update is called once per frame
     void Update()
     {
-        state.Move();
-        state.AdvanceState();
+        _state.Move();
+        _state.AdvanceState();
     }
 
     public GameObject InstantiatePellet()
@@ -36,12 +36,12 @@ public class OctorokController : MonoBehaviour
     public void SetState(OctorokDirection d, OctorokState s)
     {
         _direction = d;
-        state = s;
+        _state = s;
     }
     
     public OctorokState GetState()
     {
-        return state;
+        return _state;
     }
 
     public OctorokDirection GetDirection()

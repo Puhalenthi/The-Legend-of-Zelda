@@ -8,14 +8,14 @@ public class OctorokStateWalk : OctorokState
     private OctorokDirection _direction;
     private Vector2 _vectorDirection;
 
-    private int framesRemaining;
+    private int _framesRemaining;
 
     public OctorokStateWalk(OctorokDirection direction, OctorokController controller)
     {
         _direction = direction;
         enemy = controller;
 
-        framesRemaining = Random.Range(300, 600);
+        _framesRemaining = Random.Range(300, 600);
 
         if (direction == OctorokDirection.UP)
         {
@@ -41,9 +41,9 @@ public class OctorokStateWalk : OctorokState
 
     public void AdvanceState()
     {
-        framesRemaining--;
+        _framesRemaining--;
 
-        if (framesRemaining <= 0)
+        if (_framesRemaining <= 0)
         {
             if (_direction == OctorokDirection.UP) enemy.animator.ResetTrigger("OnWalkUp");
             else if (_direction == OctorokDirection.RIGHT) enemy.animator.ResetTrigger("OnWalkRight");

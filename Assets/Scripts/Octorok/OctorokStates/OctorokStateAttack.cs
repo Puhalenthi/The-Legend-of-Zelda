@@ -9,14 +9,14 @@ public class OctorokStateAttack : OctorokState
 
     private OctorokDirection _direction;
 
-    private int totalFrames = 300;
-    private int framesRemaining;
+    private int _totalFrames = 300;
+    private int _framesRemaining;
 
     public OctorokStateAttack(OctorokDirection direction, OctorokController controller)
     {
         _direction = direction;
         enemy = controller;
-        framesRemaining = totalFrames;
+        _framesRemaining = _totalFrames;
 
         enemy.animator.SetTrigger("OnShoot");
     }
@@ -24,8 +24,8 @@ public class OctorokStateAttack : OctorokState
     public void AdvanceState()
     {
 
-        framesRemaining--;
-        if (framesRemaining == (totalFrames / 2)) // Shoot the pellet
+        _framesRemaining--;
+        if (_framesRemaining == (_totalFrames / 2)) // Shoot the pellet
         {
             GameObject pelletInstance = enemy.InstantiatePellet();
             Pellet pelletScript = pelletInstance.GetComponent<Pellet>();
@@ -47,7 +47,7 @@ public class OctorokStateAttack : OctorokState
                 pelletScript.Instantiate(Vector2.left);
             }
         }
-        else if (framesRemaining <= 0)
+        else if (_framesRemaining <= 0)
         {
             enemy.animator.ResetTrigger("OnShoot");
             Idle(_direction, enemy);

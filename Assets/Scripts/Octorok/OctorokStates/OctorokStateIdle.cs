@@ -7,7 +7,7 @@ public class OctorokStateIdle : OctorokState
     protected OctorokController enemy;
     private OctorokDirection _direction;
 
-    private int framesRemaining;
+    private int _framesRemaining;
 
     public OctorokStateIdle(OctorokDirection direction, OctorokController controller)
     {
@@ -15,16 +15,16 @@ public class OctorokStateIdle : OctorokState
         _direction = direction;
 
         // random number of frames from 60, 181
-        framesRemaining = Random.Range(150, 300);
+        _framesRemaining = Random.Range(150, 300);
 
         enemy.animator.SetTrigger("OnIdle");
     }
 
     public void AdvanceState()
     {
-        framesRemaining--;
+        _framesRemaining--;
 
-        if (framesRemaining <= 0)
+        if (_framesRemaining <= 0)
         {
             enemy.animator.ResetTrigger("OnIdle");
             int action = Random.Range(1, 4);

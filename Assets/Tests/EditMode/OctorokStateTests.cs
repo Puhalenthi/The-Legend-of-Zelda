@@ -17,58 +17,58 @@ using UnityEngine.TestTools;
 
 public class OctorokStateTests : MonoBehaviour
 {
-    private OctorokController enemy;
+    private OctorokController _enemy;
 
     [SetUp]
     public void Setup()
     {
-        enemy = new GameObject().AddComponent<OctorokController>();
-        enemy.animator = enemy.animator.GetComponent<Animator>();
+        _enemy = new GameObject().AddComponent<OctorokController>();
+        _enemy.animator = _enemy.animator.GetComponent<Animator>();
 
-        enemy.SetState(OctorokDirection.UP, new OctorokStateIdle(OctorokDirection.UP, enemy));
+        _enemy.SetState(OctorokDirection.UP, new OctorokStateIdle(OctorokDirection.UP, _enemy));
     }
 
     [Test]
     public void UpIdleByDefault()
     {
-        Assert.AreEqual(OctorokDirection.UP, enemy.GetDirection());
-        Assert.That(enemy.GetState(), Is.TypeOf<OctorokStateIdle>());
+        Assert.AreEqual(OctorokDirection.UP, _enemy.GetDirection());
+        Assert.That(_enemy.GetState(), Is.TypeOf<OctorokStateIdle>());
     }
 
     [Test]
     public void IdleToAttackTest()
     {
         // From Idle, switching to Attack is allowed.
-        enemy.GetState().Attack(OctorokDirection.UP, enemy);
-        Assert.AreEqual(OctorokDirection.UP, enemy.GetDirection());
-        Assert.That(enemy.GetState(), Is.TypeOf<OctorokStateAttack>());
+        _enemy.GetState().Attack(OctorokDirection.UP, _enemy);
+        Assert.AreEqual(OctorokDirection.UP, _enemy.GetDirection());
+        Assert.That(_enemy.GetState(), Is.TypeOf<OctorokStateAttack>());
     }
 
     [Test]
     public void IdleToWalkTest()
     {
         // From Idle, switching to Walk is allowed.
-        enemy.GetState().Walk(OctorokDirection.UP, enemy);
-        Assert.AreEqual(OctorokDirection.UP, enemy.GetDirection());
-        Assert.That(enemy.GetState(), Is.TypeOf<OctorokStateWalk>());
+        _enemy.GetState().Walk(OctorokDirection.UP, _enemy);
+        Assert.AreEqual(OctorokDirection.UP, _enemy.GetDirection());
+        Assert.That(_enemy.GetState(), Is.TypeOf<OctorokStateWalk>());
     }
 
     [Test]
     public void SwitchingStatesAndDirectionTest()
     {
         // Switch to Walk while changing direction to RIGHT.
-        enemy.GetState().Walk(OctorokDirection.RIGHT, enemy);
-        Assert.AreEqual(OctorokDirection.RIGHT, enemy.GetDirection());
-        Assert.That(enemy.GetState(), Is.TypeOf<OctorokStateWalk>());
+        _enemy.GetState().Walk(OctorokDirection.RIGHT, _enemy);
+        Assert.AreEqual(OctorokDirection.RIGHT, _enemy.GetDirection());
+        Assert.That(_enemy.GetState(), Is.TypeOf<OctorokStateWalk>());
 
         // Switch to Idle with same direction.
-        enemy.GetState().Idle(OctorokDirection.RIGHT, enemy);
-        Assert.AreEqual(OctorokDirection.RIGHT, enemy.GetDirection());
-        Assert.That(enemy.GetState(), Is.TypeOf<OctorokStateIdle>());
+        _enemy.GetState().Idle(OctorokDirection.RIGHT, _enemy);
+        Assert.AreEqual(OctorokDirection.RIGHT, _enemy.GetDirection());
+        Assert.That(_enemy.GetState(), Is.TypeOf<OctorokStateIdle>());
 
         // Finally, switch to Attack while changing direction to LEFT.
-        enemy.GetState().Attack(OctorokDirection.LEFT, enemy);
-        Assert.AreEqual(OctorokDirection.LEFT, enemy.GetDirection());
-        Assert.That(enemy.GetState(), Is.TypeOf<OctorokStateAttack>());
+        _enemy.GetState().Attack(OctorokDirection.LEFT, _enemy);
+        Assert.AreEqual(OctorokDirection.LEFT, _enemy.GetDirection());
+        Assert.That(_enemy.GetState(), Is.TypeOf<OctorokStateAttack>());
     }
 }
