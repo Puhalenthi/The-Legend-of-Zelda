@@ -30,12 +30,10 @@ public class Pellet : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collision)
     {
         //TODO: add link taking damage and collision with bushes/rocks (deletes pellet)
-
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Boundary"))
         {
-
+            Destroy(this);
         }
-
         
     }
 }

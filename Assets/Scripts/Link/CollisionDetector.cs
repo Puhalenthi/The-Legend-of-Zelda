@@ -18,10 +18,13 @@ public class CollisionDetector : MonoBehaviour
             MessageManager.Instance.rupeeMessenger.SendMessage(new RupeeMessage());
             Destroy(collision.gameObject);
         }
-
         if (collision.gameObject.CompareTag("EndGate"))
         {
             SceneManager.LoadScene("WinScene");
-        }   
+        }
+        if (collision.gameObject.CompareTag("Pellet"))
+        {
+            MessageManager.Instance.damageMessenger.SendMessage(new DamageMessage(0.5f));
+        }
     }
 }
