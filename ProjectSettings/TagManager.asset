@@ -6,6 +6,7 @@ TagManager:
   tags:
   - EndGate
   - Boundary
+  - Rupee
   layers:
   - Default
   - TransparentFX
