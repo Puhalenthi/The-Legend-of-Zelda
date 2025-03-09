@@ -15,6 +15,8 @@ public class CollisionDetector : MonoBehaviour
         if (collision.gameObject.CompareTag("Rupee"))
         {
             //Publish a rupee message and use audioManager (from service locator) to play the rupee sound
+            MessageManager.Instance.rupeeMessenger.SendMessage(new RupeeMessage());
+            Destroy(collision.gameObject);
         }
 
         if (collision.gameObject.CompareTag("EndGate"))

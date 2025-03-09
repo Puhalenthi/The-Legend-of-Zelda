@@ -8,6 +8,7 @@ public class RupeeMessenger : Messenger<RupeeMessage>
     
     public override void SendMessage(RupeeMessage m)
     {
+        Debug.Log("Hello Rupee");
         receivers(m);
     }
 

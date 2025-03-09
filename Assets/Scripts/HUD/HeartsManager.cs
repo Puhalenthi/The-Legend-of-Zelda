@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 
 public class HeartsManager : MonoBehaviour
@@ -33,7 +35,6 @@ public class HeartsManager : MonoBehaviour
     {
         for (int i = 0; i < 3; i ++) {
             _initHeart = Instantiate(fullHeartPrefab, new Vector3(_xCoord, _yCoord, 0.0f), Quaternion.identity, this.transform);
-            Debug.Log("Hello");
             _heartObjects.Add(_initHeart);
             _heartStates.Add(_heartTypes.FullHeart);
             _xCoord += 1.25f;
@@ -143,6 +144,7 @@ public class HeartsManager : MonoBehaviour
     
     public void SignalGameOver()
     {
+        SceneManager.LoadScene("LoseScene");
         /// Game Over Screen
         Debug.Log("Game Over!");
     }
