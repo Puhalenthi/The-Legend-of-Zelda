@@ -8,14 +8,14 @@ public class OctorokStateWalk : OctorokState
     private OctorokDirection _direction;
     private Vector2 _vectorDirection;
 
-    private int framesRemaining;
+    private int _framesRemaining;
 
     public OctorokStateWalk(OctorokDirection direction, OctorokController controller)
     {
         _direction = direction;
         enemy = controller;
 
-        framesRemaining = Random.Range(300, 600);
+        _framesRemaining = Random.Range(300, 600);
 
         if (direction == OctorokDirection.UP)
         {
@@ -41,22 +41,37 @@ public class OctorokStateWalk : OctorokState
 
     public void AdvanceState()
     {
-        framesRemaining--;
+        _framesRemaining--;
 
-        if (framesRemaining <= 0)
+        if (_framesRemaining <= 0)
         {
             if (_direction == OctorokDirection.UP) enemy.animator.ResetTrigger("OnWalkUp");
             else if (_direction == OctorokDirection.RIGHT) enemy.animator.ResetTrigger("OnWalkRight");
             else if (_direction == OctorokDirection.DOWN) enemy.animator.ResetTrigger("OnWalkDown");
             else if (_direction == OctorokDirection.LEFT) enemy.animator.ResetTrigger("OnWalkLeft");
 
-            enemy.SetState(new OctorokStateIdle(_direction, enemy));
+            Idle(_direction, enemy);
         }
     }
 
     public void Move()
     {
         enemy.transform.Translate(_vectorDirection * enemy.speed * Time.deltaTime);
+    }
+
+    public void Idle(OctorokDirection direction, OctorokController enemy)
+    {
+        enemy.SetState(direction, new OctorokStateIdle(direction, enemy));
+    }
+
+    public void Walk(OctorokDirection direction, OctorokController enemy)
+    {
+        // Cannot walk while already walking
+    }
+
+    public void Attack(OctorokDirection direction, OctorokController enemy)
+    {
+        // Cannot attack while walking
     }
 
     public IEnumerator Timer(float duration)
