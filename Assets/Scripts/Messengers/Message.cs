@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class Message
 {
-    // Start is called before the first frame update
-    void Start()
+    public AudioClip sound;
+    public Message ()
     {
         
     }
-
-    // Update is called once per frame
-    void Update()
+    public Message (AudioClip sound)
     {
-        
+        this.sound = sound;
     }
 }

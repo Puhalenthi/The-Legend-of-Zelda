@@ -2,17 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KillMessenger : MonoBehaviour
+public class KillMessenger : Messenger<KillMessage>
 {
-    // Start is called before the first frame update
-    void Start()
+    private passMessage receivers;
+    
+    public override void SendMessage(KillMessage m)
     {
-        
+        receivers(m);
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Subscribe(passMessage method)
     {
-        
+        receivers += method;
+    }
+
+    public override void Unsubscribe(passMessage method)
+    {
+        receivers -= method;
     }
 }

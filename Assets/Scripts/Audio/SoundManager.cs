@@ -22,15 +22,22 @@ public class SoundManager : MonoBehaviour
 
 
 
-
+    public void Awake ()
+    {
+        MessageManager.Instance.damageMessenger.Subscribe(PlayEffect);
+        MessageManager.Instance.hitMessenger.Subscribe(PlayEffect);
+        MessageManager.Instance.killMessenger.Subscribe(PlayEffect);
+        MessageManager.Instance.rupeeMessenger.Subscribe(PlayEffect);
+    }
     public void Start ()
     {
         soundEffectSource.volume = effectVolume;
     }
 
 
-    public void PlayEffect(AudioClip clip)
+    public void PlayEffect(Message m)
     {
+        AudioClip clip = m.sound;
         soundEffectSource.clip = clip;
         soundEffectSource.Play();
     }
