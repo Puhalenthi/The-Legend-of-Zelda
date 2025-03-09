@@ -50,7 +50,7 @@ public class OctorokStateAttack : OctorokState
         else if (framesRemaining <= 0)
         {
             enemy.animator.ResetTrigger("OnShoot");
-            enemy.SetState(new OctorokStateIdle(_direction, enemy));
+            Idle(_direction, enemy);
         }
     }
 
@@ -58,4 +58,19 @@ public class OctorokStateAttack : OctorokState
     {
         //cannot move while attacking
     }
+
+    public void Idle(OctorokDirection direction, OctorokController enemy)
+    {
+        enemy.SetState(direction, new OctorokStateIdle(direction, enemy));
+    }
+
+    public void Walk(OctorokDirection direction, OctorokController enemy)
+    {
+        // Cannot walk while attacking
+    }
+    public void Attack(OctorokDirection direction, OctorokController enemy)
+    {
+        // Cannot attack while already attacking
+    }
+
 }
