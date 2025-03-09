@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealMessage : Message
+public class BombMessage : Message
 {
-
+    
 }

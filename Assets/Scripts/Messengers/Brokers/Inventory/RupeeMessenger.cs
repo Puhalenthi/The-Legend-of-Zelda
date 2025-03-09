@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealMessenger : Messenger<HealMessage>
+public class RupeeMessenger : Messenger<RupeeMessage>
 {
     private passMessage receivers;
     
-    public override void SendMessage(HealMessage msg)
+    public override void SendMessage(RupeeMessage m)
     {
-        receivers(msg);
+        receivers(m);
     }
 
     public override void Subscribe(passMessage method)
