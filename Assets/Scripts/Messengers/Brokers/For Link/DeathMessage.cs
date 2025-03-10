@@ -6,6 +6,5 @@ public class DeathMessage : Message
 {
     public DeathMessage()
     {
-        audioType = "Death";
     }
 }

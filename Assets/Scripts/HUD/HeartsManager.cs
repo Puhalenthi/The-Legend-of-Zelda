@@ -127,7 +127,7 @@ public class HeartsManager : MonoBehaviour
         }
     */
     
-    public float healthCounter ()
+    private float healthCounter ()
     {
         float totalHealth = 0.0f;
         foreach (_heartTypes heart in _heartStates)

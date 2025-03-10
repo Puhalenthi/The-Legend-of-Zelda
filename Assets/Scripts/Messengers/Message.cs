@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class Message
 {
-    public string audioType;
+    
 }

@@ -10,6 +10,5 @@ public class DamageMessage : Message
     public DamageMessage(float DmgAmount)
     {
         this.DmgAmount = DmgAmount;
-        audioType = "Damage";
     }
 }
