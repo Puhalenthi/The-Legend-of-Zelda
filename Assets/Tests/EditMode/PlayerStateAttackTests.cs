@@ -29,19 +29,21 @@ public class PlayerStateAttackTests : MonoBehaviour
         player.bottomBoxCollider = player.gameObject.AddComponent<BoxCollider2D>();
         player.leftBoxCollider = player.gameObject.AddComponent<BoxCollider2D>();
         player.rightBoxCollider = player.gameObject.AddComponent<BoxCollider2D>();
+        
+        //set direction default to up for testing
+        player.SetState(new PlayerStateAttack(player, PlayerDirection.UP));
 
         player.topBoxCollider.enabled = false;
         player.bottomBoxCollider.enabled = false;
         player.leftBoxCollider.enabled = false;
         player.rightBoxCollider.enabled = false;
 
-        //set direction default to up for testing
-        player.SetState(new PlayerStateAttack(player, PlayerDirection.UP));
     }
 
     [Test]
     public void AttackUp_TopColliderEnabled()
     {
+        player.SetState(new PlayerStateAttack(player, PlayerDirection.UP));
         Assert.IsTrue(player.topBoxCollider.enabled);
         Assert.IsFalse(player.bottomBoxCollider.enabled);
         Assert.IsFalse(player.leftBoxCollider.enabled);
