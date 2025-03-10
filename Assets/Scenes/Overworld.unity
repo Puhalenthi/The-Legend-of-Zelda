@@ -197,6 +197,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 7901258336284321320, guid: 3a1d09803775d8e4587bade35f6e7a60, type: 3}
+      propertyPath: speed
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8568581891645205401, guid: 3a1d09803775d8e4587bade35f6e7a60, type: 3}
       propertyPath: m_IsTrigger
       value: 0

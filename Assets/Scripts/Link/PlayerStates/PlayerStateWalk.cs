@@ -29,7 +29,7 @@ public class PlayerStateWalk : PlayerState
 
         player.animator.SetTrigger("OnWalkDown");
         //Debug.Log("should have set trigger./..");
-        player.transform.position = new Vector2 (player.transform.position.x, player.transform.position.y - speed);
+        player.transform.Translate(new Vector2(0, -1 * speed * Time.deltaTime));
     }
 
     public void HandleUp()
@@ -37,7 +37,7 @@ public class PlayerStateWalk : PlayerState
         this.direction = PlayerDirection.UP;
 
         player.animator.SetTrigger("OnWalkUp");
-        player.transform.position = new Vector2(player.transform.position.x, player.transform.position.y + speed);
+        player.transform.Translate(new Vector2(0, speed * Time.deltaTime));
     }
 
     public void HandleLeft()
@@ -45,7 +45,7 @@ public class PlayerStateWalk : PlayerState
         this.direction = PlayerDirection.LEFT;
 
         player.animator.SetTrigger("OnWalkLeft");
-        player.transform.position = new Vector2(player.transform.position.x - speed, player.transform.position.y);
+        player.transform.Translate(new Vector2(-1 * speed * Time.deltaTime,0));
     }
 
     public void HandleRight()
@@ -53,7 +53,7 @@ public class PlayerStateWalk : PlayerState
         this.direction = PlayerDirection.RIGHT;
 
         player.animator.SetTrigger("OnWalkRight");
-        player.transform.position = new Vector2(player.transform.position.x + speed, player.transform.position.y);
+        player.transform.Translate(new Vector2(speed * Time.deltaTime, 0));
     }
 
 
