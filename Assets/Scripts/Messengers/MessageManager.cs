@@ -10,4 +10,5 @@ public class MessageManager : Singleton<MessageManager>
     public KillMessenger killMessenger = new KillMessenger();
     public BombMessenger bombMessenger = new BombMessenger();
     public RupeeMessenger rupeeMessenger = new RupeeMessenger();
+    public DeathMessenger deathMessenger = new DeathMessenger();
 }

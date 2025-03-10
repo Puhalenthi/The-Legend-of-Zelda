@@ -15,9 +15,11 @@ public class SoundManager : MonoBehaviour
     [field: SerializeField] public AudioClip EnemyDamage { get; private set; }
     [field: SerializeField] public AudioClip LinkDie { get; private set; }
     [field: SerializeField] public AudioClip EnemyDie { get; private set; }
+    //Deprecated
     [field: SerializeField] public AudioClip Secret { get; private set; }
     [field: SerializeField] public AudioClip LinkLowHealth { get; private set; }
 
+    private AudioClip _chosenAudio;
 
 
 
@@ -28,6 +30,7 @@ public class SoundManager : MonoBehaviour
         MessageManager.Instance.hitMessenger.Subscribe(PlayEffect);
         MessageManager.Instance.killMessenger.Subscribe(PlayEffect);
         MessageManager.Instance.rupeeMessenger.Subscribe(PlayEffect);
+        MessageManager.Instance.deathMessenger.Subscribe(PlayEffect);
     }
     public void Start ()
     {
@@ -37,8 +40,31 @@ public class SoundManager : MonoBehaviour
 
     public void PlayEffect(Message m)
     {
-        AudioClip clip = m.sound;
-        soundEffectSource.clip = clip;
+        if (m.audioType == "Rupee")
+        {
+            _chosenAudio = Rupee;
+        }
+        if (m.audioType == "Attack")
+        {
+            _chosenAudio = LinkAttack;
+        }
+        if (m.audioType == "Damage")
+        {
+            _chosenAudio = LinkDamage;
+        }
+        if (m.audioType == "Hit")
+        {
+            _chosenAudio = EnemyDamage;
+        }
+        if (m.audioType == "Death")
+        {
+            _chosenAudio = LinkDie;
+        }
+        if (m.audioType == "Kill")
+        {
+            _chosenAudio = EnemyDie;
+        }
+        soundEffectSource.clip = _chosenAudio;
         soundEffectSource.Play();
     }
 

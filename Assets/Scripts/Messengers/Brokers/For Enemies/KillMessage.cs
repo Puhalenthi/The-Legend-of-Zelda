@@ -9,5 +9,6 @@ public class KillMessage : Message
     public KillMessage(GameObject CreatureKilled)
     {
         this.CreatureKilled = CreatureKilled;
+        audioType = "Kill";
     }
 }

@@ -9,5 +9,6 @@ public class HitMessage : Message
     public HitMessage (GameObject CreatureHit)
     {
         this.CreatureHit = CreatureHit;
+        audioType = "Hit";
     }
 }

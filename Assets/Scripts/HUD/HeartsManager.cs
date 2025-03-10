@@ -143,7 +143,7 @@ public class HeartsManager : MonoBehaviour
     public void SignalGameOver()
     {
         SceneManager.LoadScene("LoseScene");
-        /// Game Over Screen
+        MessageManager.Instance.deathMessenger.SendMessage(new DeathMessage());
         Debug.Log("Game Over!");
     }
 }

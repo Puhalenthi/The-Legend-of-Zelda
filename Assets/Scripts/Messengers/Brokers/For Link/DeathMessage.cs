@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RupeeMessage : Message
+public class DeathMessage : Message
 {
-    public RupeeMessage()
+    public DeathMessage()
     {
-        audioType = "Rupee";
+        audioType = "Death";
     }
 }
