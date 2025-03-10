@@ -82,8 +82,9 @@ public class PlayerStateAttackTests : MonoBehaviour
     [Test]
     public void AdvanceState_FramesRemainingDecreasesOnFramesRemainingGreaterThanZero()
     {
+        int framesRemainingCopy = ((PlayerStateAttack)player.GetState()).framesRemaining;
         player.GetState().AdvanceState();
-        Assert.AreEqual(((PlayerStateAttack)player.GetState()).framesRemaining, 59);
+        Assert.AreEqual(((PlayerStateAttack)player.GetState()).framesRemaining, framesRemainingCopy-1);
         Assert.That(player.GetState(), Is.TypeOf<PlayerStateAttack>());
     }
 
