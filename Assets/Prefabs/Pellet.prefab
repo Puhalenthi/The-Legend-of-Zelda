@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 1730964835645617961}
   - component: {fileID: 8787409471922873506}
   - component: {fileID: 9202913915205059695}
-  - component: {fileID: -8521619041396935161}
+  - component: {fileID: -2783904395605014602}
+  - component: {fileID: -8580025326424748677}
   m_Layer: 0
   m_Name: Pellet
   m_TagString: Pellet
@@ -114,7 +115,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -125,7 +126,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Constraints: 4
 --- !u!61 &-8580025326424748677
 BoxCollider2D:
   m_ObjectHideFlags: 0

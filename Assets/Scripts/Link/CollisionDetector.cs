@@ -5,10 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class CollisionDetector : MonoBehaviour
 {
-    public void OnCollisionEnter2D(Collision2D collision)
-    {
-        
-    }
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
@@ -25,6 +21,14 @@ public class CollisionDetector : MonoBehaviour
         if (collision.gameObject.CompareTag("Pellet"))
         {
             MessageManager.Instance.damageMessenger.SendMessage(new DamageMessage(0.5f));
+            StartCoroutine(DestroyPellet(collision));
+
         }
+    }
+
+    public IEnumerator DestroyPellet(Collider2D collision)
+    {
+        yield return new WaitForSeconds(0.1f);
+        Destroy(collision.gameObject);
     }
 }

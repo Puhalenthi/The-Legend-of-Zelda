@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 7464834483590859740}
   - component: {fileID: 3978687081849163567}
   m_Layer: 0
-  m_Name: Link
+  m_Name: Link_LOCAL_2036
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
