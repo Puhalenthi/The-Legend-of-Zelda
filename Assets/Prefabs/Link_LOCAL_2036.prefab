@@ -127,11 +127,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 5451474693653296494}
-  leftBoxCollider: {fileID: 0}
-  topBoxCollider: {fileID: 0}
-  rightBoxCollider: {fileID: 0}
-  bottomBoxCollider: {fileID: 0}
-  speed: 4
+  leftBoxCollider: {fileID: 3880297253298699671}
+  topBoxCollider: {fileID: 7464834483590859740}
+  rightBoxCollider: {fileID: 1167274531847971255}
+  bottomBoxCollider: {fileID: 3978687081849163567}
+  speed: 0.05
 --- !u!61 &8568581891645205401
 BoxCollider2D:
   m_ObjectHideFlags: 0
