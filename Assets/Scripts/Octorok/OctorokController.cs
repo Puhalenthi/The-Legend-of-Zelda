@@ -13,6 +13,8 @@ public class OctorokController : MonoBehaviour
     public GameObject pelletPrefab;
 
     public float speed = 2.0f;
+    private int health = 2;
+
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +53,19 @@ public class OctorokController : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            health --;
+            if (health == 0)
+            {
+                MessageManager.Instance.killMessenger.SendMessage(new KillMessage(transform.gameObject));
+                Destroy(transform.gameObject);
+            }
+            else
+            {
+                MessageManager.Instance.hitMessenger.SendMessage(new HitMessage(transform.gameObject));
+            }
+        }
         //if (collision.gameObject.CompareTag("MainCamera"))
         //{
         //    OctorokDirection randomDirection = (OctorokDirection)Random.Range(0, System.Enum.GetValues(typeof(OctorokDirection)).Length);

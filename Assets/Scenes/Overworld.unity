@@ -141,9 +141,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1167274531847971255, guid: 3a1d09803775d8e4587bade35f6e7a60, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1383655154217144155, guid: 3a1d09803775d8e4587bade35f6e7a60, type: 3}
       propertyPath: m_Name
       value: Link
+      objectReference: {fileID: 0}
+    - target: {fileID: 1383655154217144155, guid: 3a1d09803775d8e4587bade35f6e7a60, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 2562816542987844145, guid: 3a1d09803775d8e4587bade35f6e7a60, type: 3}
       propertyPath: m_LocalPosition.x
@@ -193,9 +201,21 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3880297253298699671, guid: 3a1d09803775d8e4587bade35f6e7a60, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3978687081849163567, guid: 3a1d09803775d8e4587bade35f6e7a60, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5417234880007493314, guid: 3a1d09803775d8e4587bade35f6e7a60, type: 3}
       propertyPath: m_SortingOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7464834483590859740, guid: 3a1d09803775d8e4587bade35f6e7a60, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8568581891645205401, guid: 3a1d09803775d8e4587bade35f6e7a60, type: 3}
       propertyPath: m_IsTrigger
