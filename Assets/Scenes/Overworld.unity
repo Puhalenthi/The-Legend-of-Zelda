@@ -122,6 +122,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &446045 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2780707849043423831, guid: 4db18881516e7334098a37e321652746, type: 3}
+  m_PrefabInstance: {fileID: 2157140929798073888}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &374185528 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5715733148697455114, guid: 2f40db8b240bb234eb4515f9a9827c3d, type: 3}
@@ -431,10 +436,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!1 &978789029 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 254497642286560143, guid: 4db18881516e7334098a37e321652746, type: 3}
+  m_PrefabInstance: {fileID: 2157140929798073888}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1137294782 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 261087689414996688, guid: 83cec7dcef63b1744afd5da341720d60, type: 3}
   m_PrefabInstance: {fileID: 589349473}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1169146808 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8426211956513582332, guid: 4db18881516e7334098a37e321652746, type: 3}
+  m_PrefabInstance: {fileID: 2157140929798073888}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1280100318 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6891500058564400017, guid: 4db18881516e7334098a37e321652746, type: 3}
+  m_PrefabInstance: {fileID: 2157140929798073888}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1382516286
 PrefabInstance:
@@ -1267,13 +1287,31 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4324628175071519527, guid: 4db18881516e7334098a37e321652746, type: 3}
       insertIndex: 124
       addedObject: {fileID: 828388795}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 254497642286560143, guid: 4db18881516e7334098a37e321652746, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2157140929798073891}
   m_SourcePrefab: {fileID: 100100000, guid: 4db18881516e7334098a37e321652746, type: 3}
 --- !u!4 &2157140929798073889 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4324628175071519527, guid: 4db18881516e7334098a37e321652746, type: 3}
   m_PrefabInstance: {fileID: 2157140929798073888}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2157140929798073891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978789029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14bb006afa4eb214c9939b5f8bf43e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RupeeText: {fileID: 446045}
+  Bridge: {fileID: 1169146808}
+  BridgeCollider: {fileID: 1280100318}
 --- !u!1001 &2739001457547448172
 PrefabInstance:
   m_ObjectHideFlags: 0
