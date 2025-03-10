@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerStateAttack : PlayerState
 {
     protected PlayerController player;
-    private int framesRemaining = 60;
+    public int framesRemaining = 60;
 
     private PlayerDirection direction;
 
