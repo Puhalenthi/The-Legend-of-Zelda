@@ -10,12 +10,10 @@ public class HeartsManager : MonoBehaviour
     private List<GameObject> _heartObjects = new List<GameObject>();
     private float _xCoord = -0.5f;
     private float _yCoord = 2.9f;
+
+    public GameObject FullHeartPrefab;
     
-    [SerializeField]
-    private GameObject fullHeartPrefab;
-    
-    [SerializeField]
-    private GameObject halfHeartPrefab;
+    public GameObject HalfHeartPrefab;
     
     private GameObject _initHeart, _oldHeart, _newHeart;
     private int _floorDmg;
@@ -32,13 +30,13 @@ public class HeartsManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        initHearts();
+        InitHearts();
     }
 
-    private void initHearts()
+    public void InitHearts()
     {
         for (int i = 0; i < 3; i ++) {
-            _initHeart = Instantiate(fullHeartPrefab, new Vector3(_xCoord, _yCoord, 0.0f), Quaternion.identity, this.transform);
+            _initHeart = Instantiate(FullHeartPrefab, new Vector3(_xCoord, _yCoord, 0.0f), Quaternion.identity, this.transform);
             _heartObjects.Add(_initHeart);
             _heartStates.Add(_heartTypes.FullHeart);
             _xCoord += 1.25f;
@@ -54,8 +52,10 @@ public class HeartsManager : MonoBehaviour
     public void DamageLink(DamageMessage m)
     {
         float dmg = m.DmgAmount;
-        if (dmg >= healthCounter())
+        if (dmg >= HealthCounter())
         {
+            _heartObjects = new List<GameObject>();
+            _heartStates = new List<_heartTypes>();
             SignalGameOver();
         }
         else {
@@ -69,15 +69,15 @@ public class HeartsManager : MonoBehaviour
                     _oldHeart = _heartObjects[pos];
                     _heartObjects.RemoveAt(pos);
                     _heartStates.RemoveAt(pos);
-                    Destroy(_oldHeart);
+                    DestroyImmediate(_oldHeart);
                 }
                 if (dmg - _floorDmg == 0.5) // Half-heart calculations
                 {
                     _oldHeart = _heartObjects[_heartObjects.Count - 1];
-                    _newHeart = Instantiate(halfHeartPrefab, _oldHeart.transform.position, Quaternion.identity, this.transform);
+                    _newHeart = Instantiate(HalfHeartPrefab, _oldHeart.transform.position, Quaternion.identity, this.transform);
                     _heartObjects[_heartObjects.Count - 1] = _newHeart;
                     _heartStates[_heartStates.Count - 1] = _heartTypes.HalfHeart;
-                    Destroy(_oldHeart);
+                    DestroyImmediate(_oldHeart);
                 }
             }
             else
@@ -88,46 +88,46 @@ public class HeartsManager : MonoBehaviour
                     _oldHeart = _heartObjects[pos];
                     _heartObjects.RemoveAt(pos);
                     _heartStates.RemoveAt(pos);
-                    Destroy(_oldHeart);
+                    DestroyImmediate(_oldHeart);
                 }
                 if (dmg - _floorDmg == 0.5) // Half-heart calculations
                 {
                     _oldHeart = _heartObjects[_heartObjects.Count - 1];
                     _heartObjects.RemoveAt(_heartObjects.Count - 1);
                     _heartStates.RemoveAt(_heartStates.Count - 1);
-                    Destroy(_oldHeart);
+                    DestroyImmediate(_oldHeart);
                 }
                 else
                 {
-                    Debug.Log(2);
                     _oldHeart = _heartObjects[_heartObjects.Count - 1];
-                    _newHeart = Instantiate(halfHeartPrefab, _oldHeart.transform.position, Quaternion.identity, this.transform);
+                    _newHeart = Instantiate(HalfHeartPrefab, _oldHeart.transform.position, Quaternion.identity, this.transform);
                     _heartObjects[_heartObjects.Count - 1] = _newHeart;
                     _heartStates[_heartStates.Count - 1] = _heartTypes.HalfHeart;
-                    Destroy(_oldHeart);
+                    DestroyImmediate(_oldHeart);
                 }
             }
         }
     }
     
-    /*
-    public void HealLink(Message m) // Deprecated feature
+    public void SignalGameOver()
     {
-        if (totalHealth + 1 > 5)
-        {
-            _oldHeart = _heartObjects[4]; // Topmost heart
-            _newHeart = Instantiate(fullHeartPrefab, _oldHeart.transform.position, _oldHeart.transform.rotation);
-            _heartObjects[4] = ;
-            Destroy(_oldHeart);
-            _totalHealth = 5.0f;
-        }
-        else if (_totalHealth + 1 == (int)(_totalHealth + 1))
-        {
-            
-        }
-    */
+        MessageManager.Instance.deathMessenger.SendMessage(new DeathMessage());
+        InitHearts();
+        Debug.Log("Game Over!");
+    }
     
-    private float healthCounter ()
+    //Utils (& for testing purposes)
+    public int GetHeartObjectsCount ()
+    {
+        return _heartObjects.Count;
+    }
+    
+    public int GetHeartStatesCount ()
+    {
+        return _heartStates.Count;
+    }
+  
+    public float HealthCounter ()
     {
         float totalHealth = 0.0f;
         foreach (_heartTypes heart in _heartStates)
@@ -142,12 +142,5 @@ public class HeartsManager : MonoBehaviour
             }
         }
         return totalHealth;
-    }
-    
-    public void SignalGameOver()
-    {
-        MessageManager.Instance.deathMessenger.SendMessage(new DeathMessage());
-        initHearts();
-        Debug.Log("Game Over!");
     }
 }
