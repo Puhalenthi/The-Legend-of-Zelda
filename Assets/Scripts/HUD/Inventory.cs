@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Inventory : Singleton<Inventory>
 {
@@ -25,14 +26,19 @@ public class Inventory : Singleton<Inventory>
         Instance = this;
     }
     */
+    public void Awake()
+    {
+        MessageManager.Instance.rupeeMessenger.Subscribe(CollectRupee);
+    }
 
-    public void CollectRupee()
+    public void CollectRupee(Message m)
     {
         rupeeCount++;
         if (rupeeCount < 10)
         {
-            RupeeText.GetComponent<TMPro.TextMeshProUGUI>().text = rupeeCount + "/10 Rupees";
-        } else
+            RupeeText.GetComponent<TextMeshProUGUI>().text = rupeeCount + "/10 Rupees";
+        } 
+        else
         {
             RupeeText.SetActive(false);
             Bridge.SetActive(true);
