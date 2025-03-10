@@ -15,13 +15,11 @@ public class SoundManager : MonoBehaviour
     [field: SerializeField] public AudioClip EnemyDamage { get; private set; }
     [field: SerializeField] public AudioClip LinkDie { get; private set; }
     [field: SerializeField] public AudioClip EnemyDie { get; private set; }
+    //Deprecated
     [field: SerializeField] public AudioClip Secret { get; private set; }
     [field: SerializeField] public AudioClip LinkLowHealth { get; private set; }
 
-
-
-
-
+    private AudioClip _chosenAudio;
 
     public void Start ()
     {

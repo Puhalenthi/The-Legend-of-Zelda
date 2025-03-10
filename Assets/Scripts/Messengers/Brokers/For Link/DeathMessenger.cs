@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HitMessenger : Messenger<HitMessage>
+public class DeathMessenger : Messenger<DeathMessage>
 {
     private passMessage receivers;
     
-    public override void SendMessage(HitMessage m)
+    public override void SendMessage(DeathMessage m)
     {
         receivers(m);
     }

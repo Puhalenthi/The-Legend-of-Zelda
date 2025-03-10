@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.ConstrainedExecution;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -20,9 +21,17 @@ public class PlayerController : MonoBehaviour
 
     private bool canPressSpace = true;
 
+    private ServiceLocator _serviceLocator;
+
+    void Awake()
+    {
+        MessageManager.Instance.deathMessenger.Subscribe(LinkDies);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        _serviceLocator = GameObject.Find("GameManager").GetComponent<ServiceLocator>();
         animator = GetComponent<Animator>();
         state = new PlayerStateIdle(this, PlayerDirection.UP);
     }
@@ -87,6 +96,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void LinkDies (DeathMessage m)
+    {
+        _serviceLocator.AudioService.PlayEffect(_serviceLocator.AudioService.LinkDie);
+        StartCoroutine("death");
+    }
+
     public IEnumerator SpaceCooldown()
     {
         yield return new WaitForSeconds(0.5f);
@@ -97,5 +112,11 @@ public class PlayerController : MonoBehaviour
         rightBoxCollider.enabled = false;
         bottomBoxCollider.enabled = false;
         leftBoxCollider.enabled = false;
+    }
+    
+    private IEnumerator death ()
+    {
+        yield return new WaitForSeconds(1.0f);
+        SceneManager.LoadScene("LoseScene");
     }
 }
