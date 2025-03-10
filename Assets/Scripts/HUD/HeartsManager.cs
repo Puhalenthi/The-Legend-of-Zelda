@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 
 
@@ -32,6 +31,11 @@ public class HeartsManager : MonoBehaviour
     
     // Start is called before the first frame update
     void Start()
+    {
+        initHearts();
+    }
+
+    private void initHearts()
     {
         for (int i = 0; i < 3; i ++) {
             _initHeart = Instantiate(fullHeartPrefab, new Vector3(_xCoord, _yCoord, 0.0f), Quaternion.identity, this.transform);
@@ -142,8 +146,8 @@ public class HeartsManager : MonoBehaviour
     
     public void SignalGameOver()
     {
-        SceneManager.LoadScene("LoseScene");
         MessageManager.Instance.deathMessenger.SendMessage(new DeathMessage());
+        initHearts();
         Debug.Log("Game Over!");
     }
 }

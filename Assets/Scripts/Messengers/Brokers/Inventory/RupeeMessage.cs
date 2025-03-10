@@ -6,6 +6,6 @@ public class RupeeMessage : Message
 {
     public RupeeMessage()
     {
-        audioType = "Rupee";
+
     }
 }

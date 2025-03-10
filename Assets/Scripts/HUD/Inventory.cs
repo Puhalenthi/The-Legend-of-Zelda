@@ -10,7 +10,7 @@ public class Inventory : Singleton<Inventory>
     public GameObject RupeeText;
     public GameObject Bridge;
     public GameObject BridgeCollider;
-
+    private ServiceLocator _serviceLocator;
 
     /*
     //Set up Singleton
@@ -31,11 +31,18 @@ public class Inventory : Singleton<Inventory>
         MessageManager.Instance.rupeeMessenger.Subscribe(CollectRupee);
     }
 
+    public void Start()
+    {
+        _serviceLocator = GameObject.Find("GameManager").GetComponent<ServiceLocator>();
+    }
+
     public void CollectRupee(Message m)
     {
         rupeeCount++;
         if (rupeeCount < 10)
         {
+            _serviceLocator.AudioService.PlayEffect(_serviceLocator.AudioService.Rupee);
+            //GameObject.Find("GameManager").GetComponent<ServiceLocator>().
             RupeeText.GetComponent<TextMeshProUGUI>().text = rupeeCount + "/10 Rupees";
         } 
         else

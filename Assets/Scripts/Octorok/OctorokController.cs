@@ -15,10 +15,13 @@ public class OctorokController : MonoBehaviour
     public float speed = 2.0f;
     private int health = 2;
 
+    private ServiceLocator _serviceLocator;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        _serviceLocator = GameObject.Find("GameManager").GetComponent<ServiceLocator>();
         _direction = OctorokDirection.UP;
         _state = new OctorokStateIdle(_direction, this);
     }
@@ -55,15 +58,16 @@ public class OctorokController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            Debug.Log(gameObject);
             health --;
             if (health == 0)
             {
-                MessageManager.Instance.killMessenger.SendMessage(new KillMessage(transform.gameObject));
-                Destroy(transform.gameObject);
+                _serviceLocator.AudioService.PlayEffect(_serviceLocator.AudioService.EnemyDie);
+                StartCoroutine("waitForSoundToFinish");
             }
             else
             {
-                MessageManager.Instance.hitMessenger.SendMessage(new HitMessage(transform.gameObject));
+                _serviceLocator.AudioService.PlayEffect(_serviceLocator.AudioService.EnemyDamage);
             }
         }
         //if (collision.gameObject.CompareTag("MainCamera"))
@@ -71,5 +75,10 @@ public class OctorokController : MonoBehaviour
         //    OctorokDirection randomDirection = (OctorokDirection)Random.Range(0, System.Enum.GetValues(typeof(OctorokDirection)).Length);
         //    SetState(new OctorokStateWalk(randomDirection, this));
         //}
+    }
+    private IEnumerator waitForSoundToFinish()
+    {
+        yield return new WaitForSeconds(1.0f);
+        Destroy(gameObject);
     }
 }

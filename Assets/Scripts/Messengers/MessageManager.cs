@@ -6,9 +6,6 @@ public class MessageManager : Singleton<MessageManager>
 {
     //public HealMessenger healMessenger = new HealMessenger();
     public DamageMessenger damageMessenger = new DamageMessenger();
-    public HitMessenger hitMessenger = new HitMessenger();
-    public KillMessenger killMessenger = new KillMessenger();
-    public BombMessenger bombMessenger = new BombMessenger();
     public RupeeMessenger rupeeMessenger = new RupeeMessenger();
     public DeathMessenger deathMessenger = new DeathMessenger();
 }

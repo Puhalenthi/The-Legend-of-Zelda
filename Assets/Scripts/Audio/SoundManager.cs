@@ -21,50 +21,15 @@ public class SoundManager : MonoBehaviour
 
     private AudioClip _chosenAudio;
 
-
-
-
-    public void Awake ()
-    {
-        MessageManager.Instance.damageMessenger.Subscribe(PlayEffect);
-        MessageManager.Instance.hitMessenger.Subscribe(PlayEffect);
-        MessageManager.Instance.killMessenger.Subscribe(PlayEffect);
-        MessageManager.Instance.rupeeMessenger.Subscribe(PlayEffect);
-        MessageManager.Instance.deathMessenger.Subscribe(PlayEffect);
-    }
     public void Start ()
     {
         soundEffectSource.volume = effectVolume;
     }
 
 
-    public void PlayEffect(Message m)
+    public void PlayEffect(AudioClip clip)
     {
-        if (m.audioType == "Rupee")
-        {
-            _chosenAudio = Rupee;
-        }
-        if (m.audioType == "Attack")
-        {
-            _chosenAudio = LinkAttack;
-        }
-        if (m.audioType == "Damage")
-        {
-            _chosenAudio = LinkDamage;
-        }
-        if (m.audioType == "Hit")
-        {
-            _chosenAudio = EnemyDamage;
-        }
-        if (m.audioType == "Death")
-        {
-            _chosenAudio = LinkDie;
-        }
-        if (m.audioType == "Kill")
-        {
-            _chosenAudio = EnemyDie;
-        }
-        soundEffectSource.clip = _chosenAudio;
+        soundEffectSource.clip = clip;
         soundEffectSource.Play();
     }
 

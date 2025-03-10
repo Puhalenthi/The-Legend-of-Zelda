@@ -302,6 +302,26 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2694233160877537537, guid: 83cec7dcef63b1744afd5da341720d60, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 7.5956073
+      objectReference: {fileID: 0}
+    - target: {fileID: 2694233160877537537, guid: 83cec7dcef63b1744afd5da341720d60, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 7.5956073
+      objectReference: {fileID: 0}
+    - target: {fileID: 2694233160877537537, guid: 83cec7dcef63b1744afd5da341720d60, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 7.595494
+      objectReference: {fileID: 0}
+    - target: {fileID: 2694233160877537537, guid: 83cec7dcef63b1744afd5da341720d60, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 2694233160877537537, guid: 83cec7dcef63b1744afd5da341720d60, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.74
+      objectReference: {fileID: 0}
     - target: {fileID: 4501713483798072680, guid: 83cec7dcef63b1744afd5da341720d60, type: 3}
       propertyPath: m_Camera
       value: 
@@ -327,7 +347,9 @@ PrefabInstance:
       value: 265
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3971653668004684557, guid: 83cec7dcef63b1744afd5da341720d60, type: 3}
+    - {fileID: 5081296826779339044, guid: 83cec7dcef63b1744afd5da341720d60, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83cec7dcef63b1744afd5da341720d60, type: 3}
