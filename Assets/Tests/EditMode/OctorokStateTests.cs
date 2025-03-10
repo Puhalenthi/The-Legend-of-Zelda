@@ -23,7 +23,7 @@ public class OctorokStateTests : MonoBehaviour
     public void Setup()
     {
         _enemy = new GameObject().AddComponent<OctorokController>();
-        _enemy.animator = _enemy.animator.GetComponent<Animator>();
+        _enemy.animator = _enemy.gameObject.AddComponent<Animator>();
 
         _enemy.SetState(OctorokDirection.UP, new OctorokStateIdle(OctorokDirection.UP, _enemy));
     }
